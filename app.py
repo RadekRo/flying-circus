@@ -1,6 +1,6 @@
 from flask import Flask, session
 from flask import render_template, request, redirect
-import data_handler, bcrypt
+import bcrypt, data_handler
 
 app = Flask(__name__)
 app.secret_key = bcrypt.gensalt()
@@ -38,12 +38,23 @@ def sign_in():
             data_handler.add_new_user(login, hashed_password)
             return render_template('login.html', message = 'Sign in completed, you can log in now!')
 
-@app.route('/test')
+@app.route('/test', methods=['GET', 'POST'])
 def test():
-    if 'username' in session:
-        return render_template('test.html')
+    if request.method == 'GET':
+        if 'username' in session:
+            
+            if 'current_question' in session:
+                session['current_question'] += 1
+            else:
+                session['current_question'] = 0
+            
+            question = data_handler.get_current_question(session['current_question'])
+            answers = data_handler.get_current_answers(question)
+            return render_template('test.html', question = question, answers = answers)
+        else:
+            return redirect('/')
     else:
-        return redirect('/')
+        pass
 
 @app.route('/logout')
 def logout():

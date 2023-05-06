@@ -1,4 +1,5 @@
 import bcrypt, database
+from data import questions
 
 def check_password(user_data, password):
     hashed_user_password = bytes.fromhex(user_data['password'])
@@ -28,3 +29,9 @@ def get_user_data(cursor, login):
     data = {'login': login}
     cursor.execute(query, data)
     return cursor.fetchone()
+
+def get_current_question(question_number):
+    return list(questions)[question_number]
+
+def get_current_answers(question):
+    return questions[question]
