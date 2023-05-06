@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% if error %}
+    <p>
+        Password and it's repeat are different! Sign-in rejected!<br/>
+        Try again!
+    </p>
+    {% endif %}
+    <form method="POST">
+        <p>
+            <label for="login">Login:</label><br/>
+            <input type="text" id="login" name="login"/>
+        </p>
+        <p>
+            <label for="password">Password:</label><br/>
+            <input type="password" id="password" name="password"/>
+        </p>
+        <p>
+            <label for="password">Repeat password:</label><br/>
+            <input type="password" id="password-repeat" name="password-repeat"/>
+        </p>
+        <button id="btn-sign-in" type="submit">Sign in</button>
+    </form>
+{% endblock %}
