@@ -1,4 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
-    Hello World!
+    <div class="container">
+        <header>
+            <p id="welcome">Welcome</p>
+            <p id="subinfo">to English online test</p>
+        </header>
+    </div>
+    <form action="/login" method="POST">
+        <button type="submit">Login</button>
+    </form>
 {% endblock %}

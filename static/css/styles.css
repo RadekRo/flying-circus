@@ -1,0 +1,25 @@
+body {
+    text-align: center;
+    font-family: Calibri;
+}
+
+#welcome {
+    font-size: 2em;
+}
+    
+#subinfo {
+    font-size: 1.5em;
+    margin-bottom: 2em;
+}
+
+p {
+    margin: 0;
+}
+
+#btn-login {
+    margin-top: 2em;
+}
+
+button:hover {
+    cursor: pointer;
+}

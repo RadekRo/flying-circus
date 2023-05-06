@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container">
+        <header>
+            <p id="welcome">Welcome</p>
+            <p id="subinfo">to English online test</p>
+        </header>
+    </div>
+    <form action="">
+        <p>
+            <label for="login">Login:</label><br/>
+            <input type="text" id="login" name="login"/>
+        </p>
+        <p>
+            <label for="password">Password:</label><br/>
+            <input type="text" id="password" name="password"/>
+        </p>
+        <button id="btn-login" type="submit">Login</button>
+    </form>
+{% endblock %}
