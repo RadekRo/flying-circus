@@ -1,5 +1,14 @@
 {% extends "layout.html" %}
 {% block content %}
+    {% if message %}
+        <p>
+            {{ message }}
+        </p>
+    {% elif error %}
+        <p>
+            {{ error }}
+        </p>
+    {% endif %}
     <form action="" method="POST">
         <p>
             <label for="login">Login:</label><br/>

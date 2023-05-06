@@ -3,8 +3,12 @@ body {
     font-family: Calibri;
 }
 
+a {
+    text-decoration: none;
+}
 #welcome {
     font-size: 2em;
+    text-decoration: none;
 }
     
 #subinfo {

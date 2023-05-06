@@ -1,4 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
-    <a href="/login">Login</a> <a href="/sign-in">Sign in</a>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+    {% if session['username'] %}
+        <p>Logged as {{session['username']}}</p>
+        <a href="/test">[ Test ]</a> <a href="/logout">[ Log out ]</a>
+    {% else %}
+        <a href="/login">[ Login ]</a> <a href="/signin">[ Sign in ]</a>
+    {% endif %}
 {% endblock %}
