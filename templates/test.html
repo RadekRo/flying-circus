@@ -1,7 +1,13 @@
 {% extends "layout.html" %}
 {% block content %}
-    TEST
-    {{session['current_question']}}
-    {{ question }}
-    {{ answers }}
+    {{ session['question'] }}
+    <form method="POST">
+        {% for key, value in session['answers'].items() %}
+            <p>
+                <input type="radio" id="{{ key }}" name="answer-option" value="{{ value }}">
+                <label for="html">{{ key }}</label>
+            </p>
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
 {% endblock %}

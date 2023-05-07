@@ -40,21 +40,42 @@ def sign_in():
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():
+
+    if 'current_question' not in session:
+        session['current_question'] = 0
+        session['total_number_of_questions'] = data_handler.get_total_number_of_questions()
+            
+    session['question'] = data_handler.get_current_question(session['current_question'])
+    session['answers'] = data_handler.get_current_answers(session['question'])
+
     if request.method == 'GET':
         if 'username' in session:
-            
-            if 'current_question' in session:
-                session['current_question'] += 1
-            else:
-                session['current_question'] = 0
-            
-            question = data_handler.get_current_question(session['current_question'])
-            answers = data_handler.get_current_answers(question)
-            return render_template('test.html', question = question, answers = answers)
+            return render_template('test.html')
         else:
             return redirect('/')
+
     else:
-        pass
+        if 'user_result' in session:
+            if request.form.get('answer-option') == True:
+                session['user_result'] += 1
+        else:
+            if request.form.get('answer-option') == True:
+                session['user_result'] = 1
+            else:
+                session['user_result'] = 0
+        
+        if session['current_question'] == session['total_number_of_questions'] - 1:
+            return redirect('/result')
+
+        session['current_question'] += 1
+        return redirect('/test')
+    
+@app.route('/result')
+def result():
+    if 'username' in session:
+        return render_template('result.html')
+    else:
+        return redirect('/')
 
 @app.route('/logout')
 def logout():

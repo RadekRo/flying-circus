@@ -35,3 +35,6 @@ def get_current_question(question_number):
 
 def get_current_answers(question):
     return questions[question]
+
+def get_total_number_of_questions():
+    return len(questions)

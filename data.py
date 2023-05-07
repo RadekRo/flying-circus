@@ -1,12 +1,3 @@
-import bcrypt
-
-users = {'john@doe.com': '$2b$12$/TYFvXOy9wDQUOn5SKgTzedwiqB6cm.UIfPewBnz0kUQeK9Eu4mSC'}
-
-user_input = "Predator"
-salt = bcrypt.gensalt()
-bcrypt.hashpw(user_input.encode(encoding="utf-8"), salt)
-
-
 questions = {
     "I ______ bus on Mondays.": {
         "a. 'm going to work with": False,
