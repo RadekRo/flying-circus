@@ -56,10 +56,10 @@ def test():
 
     else:
         if 'user_result' in session:
-            if request.form.get('answer-option') == True:
+            if request.form.get('answer-option') == 'True':
                 session['user_result'] += 1
         else:
-            if request.form.get('answer-option') == True:
+            if request.form.get('answer-option') == 'True':
                 session['user_result'] = 1
             else:
                 session['user_result'] = 0
